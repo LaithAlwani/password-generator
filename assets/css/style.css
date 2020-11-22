@@ -1,0 +1,10 @@
+.main-box{
+    width: 60%;
+    background-color: rgba(231, 231, 231, 0.5);
+    margin:  10% 20%;
+}
+.inner-box{
+    background-color: white;
+    border: 1px dashed rgba(177, 175, 175, 0.534);
+    height: 200px;
+}
