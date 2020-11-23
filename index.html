@@ -9,13 +9,16 @@
     <title>Password Generator</title>
 </head>
 <body>
-    <div class="main-box p-3">
+    <div class="container ">
         <h1 class="text-center">Password Generator</h1>
         <h5>Generate a Password</h5>
+        <p class="text-muted">click the generate button and follow the instructions</p>
         <hr>
-        <div class="inner-box text-center p-3">Please answer the question to generate a proper password</div>
+        <div class="inner-box text-center p-5">
+            <p id="passwordText" >Please answer the question to generate a proper password</p> 
+        </div>
         <hr>
-        <button class="btn btn-danger btn-block">Generate</button>
+        <button id="generate" class="btn btn-danger btn-block">Generate</button>
     </div>
 
     <script src="script.js"></script>

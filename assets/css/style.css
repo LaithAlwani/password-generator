@@ -1,10 +1,12 @@
-.main-box{
-    width: 60%;
+.container{
+    margin-top: 10%;
     background-color: rgba(231, 231, 231, 0.5);
-    margin:  10% 20%;
+    padding-bottom: 20px;
 }
 .inner-box{
     background-color: white;
     border: 1px dashed rgba(177, 175, 175, 0.534);
     height: 200px;
+    word-wrap: break-word;
+    
 }
