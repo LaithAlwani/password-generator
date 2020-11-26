@@ -3,13 +3,13 @@ var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P"
 var numbers = ["1","2","3","4","5","6","7","8","9","0"]
 var specialChars = ["!","@","#","$","%","^","&","*","(",")"];
 
-
 function GeneratePassword() {
     //variable declerations
     var includedChars = [];
     var forcedChars = [];
-    var password = [];
+    var passwordArray = [];
     var passwordLength = prompt("how long would you like the length of the password to be");
+    var password = ""; //string variable to display the password
 
     //check for passwordLength to make sure its a number between 8 and 128 and it's not a string
     while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) { 
@@ -18,60 +18,58 @@ function GeneratePassword() {
 
     //do while loop to make sure at least one cirteria is choosen
     do{
-        var includeLC = confirm("include Lowercase letters?");
-        var includeUC = confirm("include Uppercase letters?");
-        var includeNum = confirm("include Numbers?");
-        var includeSC = confirm("include Special Chars?");
+        var includeLC = confirm("would you like the password to include Lowercase letters?");
+        var includeUC = confirm("would you like the password to include Uppercase letters?");
+        var includeNum = confirm("would you like the password to include numbers?");
+        var includeSC = confirm("would you like the password to include special charaters?");
+        if(!includeLC & !includeUC & !includeNum & !includeSC){
+            alert("Please choose at least one criteria")
+        }
     }
         
     while(!includeLC & !includeUC & !includeNum & !includeSC);
 
-    //checking password criteria
-    if(includeLC){
-        includedChars = includedChars.concat(lowerCase);
-        forcedChars.push(lowerCase[Math.floor(Math.random()*lowerCase.length)])
-        console.log(forcedChars);
+    //add included character to the includeChars array
+    function addCharacters (characters){
+        includedChars = includedChars.concat(characters);
+        forcedChars.push(characters[Math.floor(Math.random()*characters.length)])
     }
 
-    
+    //adding characters to includedChars, the password will be choosen from the new array.
+    if(includeLC){
+        addCharacters(lowerCase);  
+    }
+
     if(includeUC){
-        includedChars = includedChars.concat(upperCase);
-        forcedChars.push(upperCase[Math.floor(Math.random()*upperCase.length)])
-        console.log(forcedChars);
+        addCharacters(upperCase);    
     }
     if(includeNum){
-        includedChars = includedChars.concat(numbers);
-        forcedChars.push(numbers[Math.floor(Math.random()*numbers.length)])
-        console.log(forcedChars);
+        addCharacters(numbers)   
     }
-
     if(includeSC){
-        includedChars = includedChars.concat(specialChars);
-        forcedChars.push(specialChars[Math.floor(Math.random()*specialChars.length)])
-        console.log(forcedChars);
+        addCharacters(specialChars);
     }
 
     for(var i= 0; i<passwordLength;i++){
-        password.push(includedChars[Math.floor(Math.random()*includedChars.length)]) ;
+        passwordArray.push(includedChars[Math.floor(Math.random()*includedChars.length)]) ;
     }
     
-    //spliced the last few elemets of the password and push the froced chars to make sure it includes the 
+    //splice the last few elemets of the password and push the froced chars to make sure it includes the 
     // all of the required characters
-    password.splice(password.length-forcedChars.length, forcedChars.length);
+    passwordArray.splice((passwordArray.length-forcedChars.length), forcedChars.length);
     for(var i=0; i<forcedChars.length;i++){
-        password.push(forcedChars[i]);
+        passwordArray.push(forcedChars[i]);
     }
 
-    //string variable to display the password
-    var thePassword = "";
+    
 
     
     //converted the password array into a string
     for(var i=0; i<passwordLength;i++){
-        thePassword += password[i];
+        password += passwordArray[i];
     }
     //display the password in the HTML file
-    document.getElementById("passwordText").innerHTML = thePassword;
+    document.getElementById("passwordText").innerHTML = password;
     
 }
 
