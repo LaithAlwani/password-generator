@@ -68,7 +68,7 @@ function GeneratePassword() {
     
     //converted the password array into a string
     for(var i=0; i<passwordLength;i++){
-        akherKalam += password[i];
+        thePassword += password[i];
     }
     //display the password in the HTML file
     document.getElementById("passwordText").innerHTML = thePassword;
