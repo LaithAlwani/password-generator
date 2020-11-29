@@ -1,12 +1,14 @@
+/* added backgorund color, padding and margins to the container class*/
 .container{
     margin-top: 10%;
     background-color: rgba(231, 231, 231, 0.5);
     padding-bottom: 20px;
 }
+/* background color, dashed border */
 .inner-box{
     background-color: white;
     border: 1px dashed rgba(177, 175, 175, 0.534);
     height: 200px;
-    word-wrap: break-word;
+    word-wrap: break-word; /*makes sure the text wraps to another line when there is not enough space to the fit the whole passwork in the box's width*/
     
 }
